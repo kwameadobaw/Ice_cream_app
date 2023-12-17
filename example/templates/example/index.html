@@ -1,1 +1,39 @@
-<p>Here is the index page</p>
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Django Tailwind</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	</head>
+
+	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
+		<div class="container mx-auto">
+			<section class="flex items-center justify-center h-screen">
+				<h1 class="text-3xl">Django + Tailwind = ❤️</h1>
+                <main>
+                    <table>
+                        <tr>
+                        <th>Ice cream name</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        </tr>
+                        {% if ice_creams %}
+                        {% for ice_cream in ice_creams %}
+                        <tr>
+                            <td>{{ice_cream.ice_cream_name}}</td>
+                            <td>{{ice_cream.ice_cream_type}}</td>
+                            <td>{{ice_cream.ice_cream_price}}</td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <p>No data found.</p>
+                        {% endif %}
+                    </table>
+                </main>
+			</section>
+		</div>
+	</body>
+</html>
